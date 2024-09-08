@@ -10,7 +10,7 @@
   <!--navagation bar-->
   <div class="header-bar">
     <div class="tamu-logo">
-      <img src="https://media.discordapp.net/attachments/1150107522309570580/1150213628973285386/51.png?width=1440&height=436" width="350" height="100">
+      <img src="https://th.bing.com/th/id/OIP.FBnozj5UtAZpK2L4sx7ArQHaBz?pid=ImgDet&w=206&h=51.90234375000001&c=7&dpr=1.4" width="450" height="100"> 
     </div>
   
     <div class="navbar">
@@ -18,7 +18,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a class="active" href="queue.html">Queue</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="https://12thman.com/sports/football/schedule/2023" target="_blank" rel="noopener noreferrer">Football Games</a></li>
+          <li><a href="https://12thman.com/sports/football/schedule/2024" target="_blank" rel="noopener noreferrer">Football Games</a></li>
         </ul>
     </div>
   </div>  
@@ -26,13 +26,13 @@
   <div class="content">
     <div>
       <h1 id="gameinfo_title">Game Information</h1>
-      <p id="senior">SENIORS PULL NOW!</p>
+      <p id="senior">SENIORS PULL IN</p>
       <div style="display: flex; flex-direction: row; justify-content: space-between;">
         <div id="gameinfo_div" style="display: flex";>
-          <p style="margin-left: 60px" class="game_info"><span style="font-weight: 690; color: maroon">Date:</span> Nov. 9th, 2024  <br> <br> <span style="font-weight: 690; color: maroon">Time:</span> 6:30pm <br> <br> <span style="font-weight: 690; color: maroon">Location:</span> Kyle Field</p>
+          <p style="margin-left: 60px" class="game_info"><span style="font-weight: 690; color: maroon">Date:</span> Nov. 30th, 2024  <br> <br> <span style="font-weight: 690; color: maroon">Time:</span> Flex <br> <br> <span style="font-weight: 690; color: maroon">Location:</span> Kyle Field </p>
         </div>
         <div style="display: flex">
-          <img id="game_img" src="https://media.discordapp.net/attachments/1150107522309570580/1150268075472605204/Screenshot_2023-09-09_221430.png?width=1440&height=451">
+          <img id="game_img" src="https://andystravelblog.com/wp-content/uploads/2015/09/Kyle-Field-2.jpg" alt="Kyle Field">
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <!--button + img-->
       <div id="button_img" style="display: flex; flex-direction: row; justify-content: space-around;">
         <div>
-          <img id="man_logo" src="https://media.discordapp.net/attachments/1150107522309570580/1150269743387918446/Screenshot_2023-09-09_222035.png?width=738&height=733">
+          <img id="man_logo" src="https://i.pinimg.com/originals/dc/77/ca/dc77caea6977bbc2f8f9d05cb4ee2377.jpg" alt="Longhorn Logo for UT Austin">
         </div>
         <div>
           <button style="margin-top: -440px;" id="button", onclick="enterQueue()", >Join Virtual Queue</button>
@@ -50,6 +50,7 @@
         </div>
       </div>
     </div>
+
     <div>
       <p id="queue_bottom"></p>
     </div>
@@ -73,10 +74,11 @@
     </div>
   </div>
   <script>
-    let currentTime = new Date();
-    let juniorTime = new Date('September 20, 2023 08:00:00');
-    let sophmoreTime = new Date('September 21, 2023 08:00:00');
-    let freshmanTime = new Date('September 22, 2023 08:00:00');
+    let currentTime = new Date('November 24 2024 08:00:00');
+    let seniorTime = new Date('November 25, 2024 08:00:00')
+    let juniorTime = new Date('November 26, 2024 08:00:00');
+    let sophmoreTime = new Date('November 27, 2024 08:00:00');
+    let freshmanTime = new Date('November 28, 2024 08:00:00');
 
     function getRandomNumber() {
       // Generate a random number between 1 and 1000
@@ -97,41 +99,76 @@
     enterQueueButton.addEventListener("click", enterQueue);
 
     
-    function flipflop()
-    {
-      currentTime = new Date();
+    function JuniorTime() {
+        currentTime = new Date();
 
-      let timeRemainingMs = juniorTime - currentTime;
-      let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
-      let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60)
-      let timeRemainingHours = Math.floor(timeRemainingMinutes / 60)
-      document.getElementById("countdown1").innerText = timeRemainingHours + ":" + timeRemainingMinutes % 60 + ":" + timeRemainingSeconds % 60 + "";
+        let timeRemainingMs = juniorTime - currentTime;
+        let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
+        let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60);
+        let timeRemainingHours = Math.floor(timeRemainingMinutes / 60);
+        let timeRemaindingDays = Math.floor(timeRemainingHours / 24);
 
+        if (timeRemaindingDays > 0) {
+            document.getElementById("countdown1").innerText = "In " + timeRemaindingDays + " Days";
+        } else if (timeRemaindingHours > 0) {
+            document.getElementById("countdown1").innerText = "In " + timeRemainingHours + " Hours ";
+        } else if (timeRemaindingMinutes > 0) {
+            document.getElementById("countdown1").innerText = "In " + timeRemaindingMinutes + " Minutes";
+        } else if (timeRemaindingSeconods > 0) {
+            document.getElementById("countdown1").innerText = "In " + timeRemainingSeconds % 60 + " Seconds";
+        } else {
+            document.getElementById("countdown1").innerText = "SOPHMORES PULLING AVAILABLE";
+        }
     }
     
-    function SophmoreTime(){
-      currentTime = new Date();
-      let timeRemainingMs = sophmoreTime - currentTime;
-      let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
-      let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60)
-      let timeRemainingHours = Math.floor(timeRemainingMinutes / 60)
-      document.getElementById("countdown2").innerText = timeRemainingHours + ":" + timeRemainingMinutes % 60 + ":" + timeRemainingSeconds % 60 + "";
+    function SophmoreTime() {
+        currentTime = new Date();
 
+        let timeRemainingMs = sophmoreTime - currentTime;
+        let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
+        let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60);
+        let timeRemainingHours = Math.floor(timeRemainingMinutes / 60);
+        let timeRemaindingDays = Math.floor(timeRemainingHours / 24);
+
+        if (timeRemaindingDays > 0) {
+            document.getElementById("countdown2").innerText = "In " + timeRemaindingDays + " Days";
+        } else if (timeRemaindingHours > 0) {
+            document.getElementById("countdown2").innerText = "In " + timeRemainingHours + " Hours ";
+        } else if (timeRemaindingMinutes > 0) {
+            document.getElementById("countdown2").innerText = "In " + timeRemaindingMinutes + " Minutes";
+        } else if (timeRemaindingSeconods > 0) {
+            document.getElementById("countdown2").innerText = "In " + timeRemainingSeconds % 60 + " Seconds";
+        } else {
+            document.getElementById("countdown2").innerText = "SOPHMORES PULLING AVAILABLE";
+        }
     }
+        
 
-    function FreshmanTime(){
-      currentTime = new Date();
-      let timeRemainingMs = freshmanTime - currentTime;
-      let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
-      let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60)
-      let timeRemainingHours = Math.floor(timeRemainingMinutes / 60)
-      document.getElementById("countdown3").innerText = timeRemainingHours + ":" + timeRemainingMinutes % 60 + ":" + timeRemainingSeconds % 60 + "";
+    function FreshmanTime() {
+        currentTime = new Date();
 
+        let timeRemainingMs = freshmanTime - currentTime;
+        let timeRemainingSeconds = Math.floor(timeRemainingMs / 1000);
+        let timeRemainingMinutes = Math.floor(timeRemainingSeconds / 60);
+        let timeRemainingHours = Math.floor(timeRemainingMinutes / 60);
+        let timeRemaindingDays = Math.floor(timeRemainingHours / 24);
+
+        if (timeRemaindingDays > 0) {
+            document.getElementById("countdown3").innerText = "In " + timeRemaindingDays + " Days";
+        } else if (timeRemaindingHours > 0) {
+            document.getElementById("countdown3").innerText = "In " + timeRemainingHours + " Hours ";
+        } else if (timeRemaindingMinutes > 0) {
+            document.getElementById("countdown3").innerText = "In " + timeRemaindingMinutes + " Minutes";
+        } else if (timeRemaindingSeconods > 0) {
+            document.getElementById("countdown3").innerText = "In " + timeRemainingSeconds % 60 + " Seconds";
+        } else {
+            document.getElementById("countdown3").innerText = "SOPHMORES PULLING AVAILABLE";
+        }
     }
 
     function startCountdown ()
     {
-      setInterval(flipflop, 1000);
+      setInterval(JuniorTime, 1000);
       setInterval(SophmoreTime, 1000);
       setInterval(FreshmanTime, 1000);
     }
